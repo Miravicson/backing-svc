@@ -9,7 +9,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./mongdb/data/db:/data/db
+      - ./mongodb/data/db:/data/db
     ports:
       - 27017:27017
 
