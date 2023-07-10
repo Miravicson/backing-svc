@@ -1,2 +1,5 @@
-CREATE DATABASE dot_insure;
-CREATE DATABASE "dotpay-transactions"
+CREATE DATABASE DOT_INSURE;
+
+CREATE DATABASE "dotpay-transactions";
+
+CREATE DATABASE "dotpay-transfers";
