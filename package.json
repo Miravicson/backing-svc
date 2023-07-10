@@ -1,0 +1,16 @@
+{
+  "name": "backing-svc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mongodb": "docker compose up mongodb",
+    "redis": "docker compose up redis",
+    "kafka": "docker compose up zookeeper kafka",
+    "postgres": "docker compose up postgres",
+    "all-svc": "docker compose up"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
