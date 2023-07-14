@@ -31,12 +31,13 @@ services:
     image: postgres:12-alpine
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER={POSTGRES_USER}
+      - POSTGRES_PASSWORD={POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
       - ./create-db.sql:/docker-entrypoint-initdb.d/create-db.sql
+      - ./postgresql/data:/var/lib/postgresql/data
 
   zookeeper:
     container_name: zookeeper
@@ -69,8 +70,8 @@ services:
     image: rabbitmq:management
     container_name: rabbitmq
     environment:
-      - RABBITMQ_DEFAULT_USER=guest
-      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_USER={RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS={RABBITMQ_DEFAULT_PASS}
     ports:
       - "5672:5672"
       - "15672:15672"
