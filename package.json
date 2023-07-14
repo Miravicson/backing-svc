@@ -8,6 +8,8 @@
     "redis": "docker compose up redis",
     "kafka": "docker compose up zookeeper kafka",
     "postgres": "docker compose up postgres",
+    "rabbitmq": "docker compose up rabbitmq",
+    "nats": "docker compose up nats",
     "all-svc": "docker compose up"
   },
   "keywords": [],
