@@ -12,18 +12,17 @@ services:
       - ./mongodb/data/db:/data/db
     ports:
       - 27017:27017
-
+  
   redis:
     container_name: redis
-    image: redis:6.2-alpine
+    image: redis/redis-stack:latest
     restart: always
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_ARGS=--save 60 1000 --appendonly yes
     volumes:
       - 'redis_vol:/data'
-    ports:
-      - '6379:6379'
-    environment:
-      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
-    command: redis-server --save 20 1 --loglevel warning
 
 
   postgres:
@@ -79,6 +78,7 @@ services:
   nats:
     container_name: nats
     image: bitnami/nats:latest
+
     environment:
       - NATS_ENABLE_AUTH=no
       # - NATS_PASSWORD=my_password
@@ -87,6 +87,19 @@ services:
       - '6222:6222'
       - '8222:8222'
 
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql:/var/lib/mysql
 
 
 
